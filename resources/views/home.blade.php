@@ -37,7 +37,7 @@
 	<div class="container-fluid">
 	  <div class="row content">
 	    <div class="col-sm-3 sidenav">
-	      <h4>Bintang.com</h4>
+	      <h1>Bintang.com</h1>
 	      <ul class="nav nav-pills nav-stacked">
 	        <li><a href="{{ route('consume.index') }}">Popular Post</a></li>
 	        <li><a href="{{ route('consume.category', 'business')}}">Business</a></li>
@@ -58,7 +58,7 @@
 	   		@foreach($articles as $val)
 				<h4><small>{{ $val->source->name }}</small></h4>
 				<hr>
-				<img src="{{ $val->urlToImage }}">
+				<img src="{{ $val->urlToImage }}" height="80%" width="100%">
 				<h2><a href="{{$val->url}}"> {{$val->title}}</a></h2>
 				<h5><span class="glyphicon glyphicon-time"></span> {{$val->author}}, {{ substr($val->publishedAt,0,10) }}.</h5><br>
 				<p>{{$val->description}}</p>
@@ -69,5 +69,21 @@
 	<footer class="container-fluid">
 	  <p>Footer Text</p>
 	</footer>
+
+
+<script>
+$(document).ready(function(){
+    $.ajax({
+      method: "GET",
+      url: "https://newsapi.org/v2/everything",
+      data: { q: "John", apiKey: "b22a880bb7e24cf8b7ec18a9ef0deb7c",
+      dataType: "json"}
+    })
+	.done(function( msg ) {
+		console.log(msg);
+	});
+    
+});
+</script>
 </body>
 </html>
